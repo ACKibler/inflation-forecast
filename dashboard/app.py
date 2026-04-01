@@ -2,6 +2,7 @@
 Inflation Forecast Dashboard
 Run with: streamlit run dashboard/app.py
 """
+import os
 import warnings
 import numpy as np
 import pandas as pd
@@ -9,6 +10,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 from itertools import product
+from fredapi import Fred
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.api import VAR
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -26,9 +28,39 @@ st.title("U.S. Inflation Forecast")
 st.caption("ARIMA vs VAR models trained on FRED macroeconomic data (2000 – present)")
 
 # ── load & cache data ─────────────────────────────────────────────────────────
-@st.cache_data
+def _get_api_key():
+    """Return FRED API key from st.secrets (cloud) or .env (local)."""
+    try:
+        return st.secrets["FRED_API_KEY"]
+    except Exception:
+        from dotenv import load_dotenv
+        load_dotenv()
+        return os.getenv("FRED_API_KEY")
+
+@st.cache_data(show_spinner="Fetching data from FRED...")
 def load_data():
-    df = pd.read_csv("data/macro_data.csv", index_col=0, parse_dates=True)
+    # Use local CSV if available (faster for development)
+    csv_path = os.path.join(os.path.dirname(__file__), "..", "data", "macro_data.csv")
+    if os.path.exists(csv_path):
+        df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
+    else:
+        api_key = _get_api_key()
+        fred = Fred(api_key=api_key)
+        series = {
+            "CPI":      "CPIAUCSL",
+            "UNRATE":   "UNRATE",
+            "M2":       "M2SL",
+            "OIL":      "DCOILWTICO",
+            "FEDFUNDS": "FEDFUNDS",
+        }
+        dfs = []
+        for name, sid in series.items():
+            data = fred.get_series(sid, observation_start="2000-01-01")
+            data.name = name
+            dfs.append(data)
+        df = pd.concat(dfs, axis=1).resample("MS").mean()
+        df.dropna(subset=["CPI", "UNRATE"], inplace=True)
+
     full_idx = pd.date_range(df.index.min(), df.index.max(), freq="MS")
     df = df.reindex(full_idx).interpolate(method="time")
     df.index.freq = "MS"
