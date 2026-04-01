@@ -99,16 +99,17 @@ ADF tests run in `src/stationarity.py`. Results inform modeling treatment:
 - [x] notebooks/eda.ipynb: fully executed — time series plots, correlation heatmap, ACF/PACF, seasonal decomposition (13 output PNGs in outputs/)
 - [x] src/stationarity.py: ADF tests on levels, first differences, and log-differences
 - [x] CPI confirmed to need log-differencing; all series stationary after treatment
+- [x] src/arima_model.py: AIC grid search → ARIMA(1,1,4), RMSE=33.74, MAE=30.57, MAPE=9.88%
+- [x] src/var_model.py: VAR(4) via AIC lag selection, IRF, RMSE=24.64, MAE=22.28, MAPE=7.20%
+- [x] src/evaluate_models.py: side-by-side comparison, overlay plot, bar chart, model_metrics.csv
+- [x] dashboard/app.py: 4-tab Streamlit app (time series, forecasts, comparison, about)
 
 ### In Progress
-- [ ] None — stationarity section complete
+- [ ] None
 
 ### Next Up
-- [ ] Fit ARIMA model on CPI (log-differenced)
-- [ ] Select optimal ARIMA(p,d,q) using AIC/BIC grid search
-- [ ] Fit VAR model with all variables
-- [ ] Select optimal VAR lag order
-- [ ] Generate impulse response functions (IRF)
+- [ ] Deploy dashboard to Streamlit Cloud
+- [ ] Write paper sections (intro, data, methodology, results, conclusion)
 
 ---
 

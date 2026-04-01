@@ -21,24 +21,24 @@
 - [x] Log-transform skewed variables if needed
 
 ### Modeling
-- [ ] Fit ARIMA model on CPI
-- [ ] Select optimal ARIMA(p,d,q) parameters using AIC/BIC
-- [ ] Fit VAR model with all variables
-- [ ] Select optimal VAR lag order
-- [ ] Generate impulse response functions (IRF)
+- [x] Fit ARIMA model on CPI
+- [x] Select optimal ARIMA(p,d,q) parameters using AIC/BIC
+- [x] Fit VAR model with all variables
+- [x] Select optimal VAR lag order
+- [x] Generate impulse response functions (IRF)
 
 ### Evaluation
-- [ ] Split data into train/test sets (80/20)
-- [ ] Generate out-of-sample forecasts
-- [ ] Compute RMSE and MAE for each model
-- [ ] Compare ARIMA vs VAR performance
-- [ ] Plot forecast vs actual values
+- [x] Split data into train/test sets (80/20)
+- [x] Generate out-of-sample forecasts
+- [x] Compute RMSE and MAE for each model
+- [x] Compare ARIMA vs VAR performance
+- [x] Plot forecast vs actual values
 
 ### Dashboard
-- [ ] Scaffold Streamlit app in /dashboard
-- [ ] Add time series visualization panel
-- [ ] Add forecast visualization panel
-- [ ] Add model comparison panel
+- [x] Scaffold Streamlit app in /dashboard
+- [x] Add time series visualization panel
+- [x] Add forecast visualization panel
+- [x] Add model comparison panel
 - [ ] Deploy dashboard (Streamlit Cloud)
 
 ### Paper
