@@ -31,21 +31,28 @@ st.caption("ARIMA vs VAR models trained on FRED macroeconomic data (2000 – pre
 def _get_api_key():
     """Return FRED API key from st.secrets (cloud) or .env (local)."""
     # Try Streamlit secrets first (cloud deployment)
-    key = st.secrets.get("FRED_API_KEY", None)
-    if key:
-        return key
+    try:
+        key = st.secrets["FRED_API_KEY"]
+        if key:
+            return key
+    except (KeyError, FileNotFoundError):
+        pass
     # Fall back to .env for local development
-    from dotenv import load_dotenv
-    load_dotenv()
-    key = os.getenv("FRED_API_KEY")
-    if not key:
-        st.error(
-            "**FRED API key not found.** "
-            "Add `FRED_API_KEY` under *App Settings > Secrets* in Streamlit Cloud, "
-            "or create a `.env` file locally."
-        )
-        st.stop()
-    return key
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+        key = os.getenv("FRED_API_KEY")
+        if key:
+            return key
+    except Exception:
+        pass
+    # Neither source worked
+    st.error(
+        "**FRED API key not found.**\n\n"
+        "On Streamlit Cloud: go to **Manage app → Settings → Secrets** and add:\n"
+        "```toml\nFRED_API_KEY = \"your_key_here\"\n```"
+    )
+    st.stop()
 
 @st.cache_data(show_spinner="Fetching data from FRED...")
 def load_data():
