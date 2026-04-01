@@ -3,22 +3,22 @@
 ## 🔴 Backlog
 
 ### Data
-- [ ] Verify fetch_data.py runs and saves macro_data.csv cleanly
-- [ ] Add data validation checks (missing values, date ranges)
+- [x] Verify fetch_data.py runs and saves macro_data.csv cleanly
+- [x] Add data validation checks (missing values, date ranges)
 - [ ] Document each FRED series in a data dictionary
 
 ### EDA
-- [ ] Create EDA notebook in /notebooks
-- [ ] Plot each time series over time
-- [ ] Build ACF/PACF plots
-- [ ] Run trend decomposition (seasonal, trend, residual)
-- [ ] Compute summary statistics table
+- [x] Create EDA notebook in /notebooks
+- [x] Plot each time series over time
+- [x] Build ACF/PACF plots
+- [x] Run trend decomposition (seasonal, trend, residual)
+- [x] Compute summary statistics table
 
 ### Stationarity & Preprocessing
-- [ ] Run ADF tests on all series
-- [ ] Difference non-stationary series
-- [ ] Re-run ADF tests on differenced series
-- [ ] Log-transform skewed variables if needed
+- [x] Run ADF tests on all series
+- [x] Difference non-stationary series
+- [x] Re-run ADF tests on differenced series
+- [x] Log-transform skewed variables if needed
 
 ### Modeling
 - [ ] Fit ARIMA model on CPI
@@ -52,7 +52,7 @@
 ---
 
 ## 🟡 In Progress
-- [ ] Verify fetch_data.py runs and saves macro_data.csv
+- [ ] Investigate missing October 2025 row (FRED reporting lag — one series missing, dropped by dropna)
 
 ---
 
