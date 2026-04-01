@@ -3,7 +3,8 @@
 **Author:** Ashton Kibler  
 **Date:** April 2026  
 **Data:** Federal Reserve Economic Data (FRED), January 2000 – February 2026  
-**Code & Dashboard:** https://github.com/ACKibler/inflation-forecast
+**Code:** https://github.com/ACKibler/inflation-forecast  
+**Live Dashboard:** https://inflation-forecast-vibe.streamlit.app/
 
 ---
 

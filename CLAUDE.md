@@ -51,6 +51,8 @@ inflation-forecast/
 │   ├── TASKS.md        # Kanban task board
 │   ├── PROGRESS.md     # Weekly progress log
 │   └── DECISIONS.md    # Key decision log
+├── .devcontainer/
+│   └── devcontainer.json   # GitHub Codespaces config (Python 3.11, auto-runs Streamlit)
 ├── CLAUDE.md
 ├── .env                # FRED_API_KEY (never committed)
 ├── .gitignore
