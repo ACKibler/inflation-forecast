@@ -48,6 +48,14 @@
 - [x] Write results section
 - [x] Write conclusion
 - [x] Add references
+- [x] Verify all numbers against model runs
+- [x] Add Granger causality table (Table 4)
+- [x] Add naive random walk benchmark (Table 3)
+- [x] Run CUSUM stability test and report findings
+- [x] Generate and embed all figures (/figures)
+- [x] Add FEDFUNDS ZLB footnote
+- [x] Expand Phillips curve discussion
+- [x] Add rolling window justification paragraph
 
 ---
 

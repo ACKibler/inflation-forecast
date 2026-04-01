@@ -4,6 +4,28 @@ A running log of key project decisions and the reasoning behind them.
 
 ---
 
+## 2026-04-01
+
+**Decision:** Correct VAR MAPE from 7.20% to 7.55% in paper
+**Reason:** Re-running paper_analysis.py revealed the earlier evaluate_models.py used a slightly different index alignment when back-transforming VAR log-differences to CPI levels, yielding a marginally different test set. The corrected figure uses a consistent SPLIT=int(len(df)*0.8) index throughout.
+
+---
+
+**Decision:** Use recursive (non-rolling) out-of-sample forecasting
+**Reason:** Model estimated once on training data and projected forward 63 steps without re-estimation. This is more conservative and susceptible to parameter instability but is standard for fixed-parameter linear models. Acknowledged in Section 3.7 with a note that rolling window evaluation is a natural extension.
+
+---
+
+**Decision:** Include FEDFUNDS in levels despite ZLB behavior
+**Reason:** Full-sample ADF rejects unit root at 1% level. Economic theory precludes a permanent unit root for a policy rate. ZLB behavior is acknowledged in a footnote in Section 3.1 for transparency.
+
+---
+
+**Decision:** Use CUSUM test (not Chow test) for stability analysis
+**Reason:** CUSUM does not require a pre-specified break date, making it more appropriate when the break (COVID-19 onset) may affect residuals gradually rather than at a single known date. The Chow test would require specifying March or April 2020 as the break point a priori.
+
+---
+
 ## 2026-03-31
 
 **Decision:** Use FRED API over manual CSV downloads

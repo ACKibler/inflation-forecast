@@ -48,6 +48,27 @@ A weekly log of work completed, blockers encountered, and next steps.
 
 ---
 
+## Week 2 — 2026-04-01
+
+### ✅ Completed
+- ARIMA(1,1,4) fit and evaluated: RMSE=33.74, MAE=30.57, MAPE=9.88%
+- VAR(4) fit and evaluated: RMSE=25.64, MAE=23.36, MAPE=7.55%
+- src/evaluate_models.py: overlay comparison plot, bar charts, model_metrics.csv
+- dashboard/app.py: 4-tab Streamlit app deployed at https://inflation-forecast-vibe.streamlit.app/
+- paper/paper.md: full research paper written (all sections)
+- paper/paper.md: critique addressed — numbers verified, Granger tests, random walk benchmark, CUSUM test, figures embedded, FEDFUNDS footnote, Phillips curve expansion, rolling window justification
+- src/paper_analysis.py: single script reproducing all paper statistics and generating /figures
+
+### 🚧 Blockers
+- VAR MAPE corrected from 7.20% to 7.55% after re-verification (back-transform index alignment)
+- CUSUM test detected parameter instability in ARIMA residuals (2020 COVID break) — documented and discussed in paper
+
+### 🔜 Next Steps
+- Project is substantially complete
+- Optional: rolling window evaluation, Bayesian VAR extension
+
+---
+
 <!-- Copy and paste the block below each week -->
 <!--
 ## Week N — YYYY-MM-DD
