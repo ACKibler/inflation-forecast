@@ -42,12 +42,12 @@
 - [ ] Deploy dashboard (Streamlit Cloud)
 
 ### Paper
-- [ ] Write introduction and research question
-- [ ] Write data section
-- [ ] Write methodology section
-- [ ] Write results section
-- [ ] Write conclusion
-- [ ] Add references
+- [x] Write introduction and research question
+- [x] Write data section
+- [x] Write methodology section
+- [x] Write results section
+- [x] Write conclusion
+- [x] Add references
 
 ---
 
