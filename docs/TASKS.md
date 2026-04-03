@@ -5,7 +5,7 @@
 ### Data
 - [x] Verify fetch_data.py runs and saves macro_data.csv cleanly
 - [x] Add data validation checks (missing values, date ranges)
-- [ ] Document each FRED series in a data dictionary
+- [x] Document each FRED series in a data dictionary (covered in CLAUDE.md data table)
 
 ### EDA
 - [x] Create EDA notebook in /notebooks
@@ -39,7 +39,7 @@
 - [x] Add time series visualization panel
 - [x] Add forecast visualization panel
 - [x] Add model comparison panel
-- [ ] Deploy dashboard (Streamlit Cloud)
+- [x] Deploy dashboard (Streamlit Cloud) — live at https://inflation-forecast-vibe.streamlit.app/
 
 ### Paper
 - [x] Write introduction and research question
@@ -60,7 +60,7 @@
 ---
 
 ## 🟡 In Progress
-- [ ] Investigate missing October 2025 row (FRED reporting lag — one series missing, dropped by dropna)
+- [x] Investigate missing October 2025 row — resolved: genuine FRED reporting lag, handled via dropna(subset=["CPI","UNRATE"]) + time interpolation before modeling
 
 ---
 
